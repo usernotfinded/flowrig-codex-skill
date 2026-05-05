@@ -1,0 +1,22 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run repo mapper smoke test
+        run: python skills/flowrig-engineering/scripts/flowrig_repo_map.py . --format json > /tmp/flowrig-map.json
+      - name: Validate skill frontmatter exists
+        run: |
+          test -f skills/flowrig-engineering/SKILL.md
+          grep -q '^name: flowrig-engineering' skills/flowrig-engineering/SKILL.md
+          grep -q '^description:' skills/flowrig-engineering/SKILL.md
