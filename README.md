@@ -114,7 +114,3 @@ Suggested skill names:
 ## License
 
 MIT. See [`LICENSE`](./LICENSE).
-
-## Notice
-
-This repository does not include third-party logos, names in the package title, copied command names, copied prose, or upstream assets. See [`NOTICE.md`](./NOTICE.md).
